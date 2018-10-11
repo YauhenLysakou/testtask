@@ -57,7 +57,9 @@ public class PlanetsTest extends PlanetsBase {
 
     @Test(description = "Perform request for the last page.")
     public void allPlanetsLastPage() {
-        int lastPage = (int) Math.floor(totalCount / 10) + 1;
+        int lastPage = (int) Math.floor(totalCount / 10);
+        if (totalCount % 10 != 0)
+            lastPage = lastPage + 1;
 
         given().
                 param("page", lastPage).
